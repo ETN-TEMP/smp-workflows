@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
-          regexp: "^.*"
+          regexp: "^(Bug \\d+ - |Change Request \\d+ - |[A-Za-z0-9]+-\\d+: )"
           flags: "i" # Flags to add to the regexp
           helpMessage: "The pull request title must be prfixed by one of the following: 'Bug ##### - ' or 'Change Request ##### - ' or 'JiraProjectName-#####: '"
