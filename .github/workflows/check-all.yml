@@ -1,0 +1,21 @@
+name: 'SMP Pull Requests Checker'
+on: 
+  pull_request:
+    types: [edited, opened, synchronize, reopened]
+
+jobs:
+  title-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Slashgear/action-check-pr-title@v4.3.0
+        with:
+          helpMessage: "The pull request title must be prfixed by one of the following: 'Bug ##### - ' or 'Change Request ##### - ' or 'WI-#####:' or 'JIRAPROJECT-#####: '"
+          regexp: "^(Bug \\d+ - |Change Request \\d+ - |WI-\\d+:|[A-Za-z0-9]+-\\d+:)"
+          flags: "i" # Flags to add to the regexp
+            
+  tasks-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
