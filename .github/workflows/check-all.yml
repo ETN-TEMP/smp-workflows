@@ -4,6 +4,12 @@ on:
     types: [edited, opened, synchronize, reopened]
 
 jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exit with success
+        run: exit 0
+
   title-check:
     runs-on: ubuntu-latest
     if: false
